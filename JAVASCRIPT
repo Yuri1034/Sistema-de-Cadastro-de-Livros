@@ -1,0 +1,22 @@
+document.getElementById('form-livro').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const titulo = document.getElementById('titulo').value;
+    const autor = document.getElementById('autor').value;
+    const capa = document.getElementById('capa').value;
+
+    const lista = document.getElementById('lista-livros');
+    const card = document.createElement('div');
+    card.className = 'livro-card';
+    card.innerHTML = `
+        <img src="${capa}" alt="Capa">
+        <div>
+            <h3>${titulo}</h3>
+            <p>${autor}</p>
+        </div>
+        <button onclick="this.parentElement.remove()" style="background-color:red; margin-left:auto;">Remover</button>
+    `;
+    
+    lista.appendChild(card);
+    document.getElementById('form-livro').reset();
+});
